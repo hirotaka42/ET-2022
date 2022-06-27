@@ -8,16 +8,18 @@
 
 // Lコースの情報を初期化する
 const std::array<SectionParam, LineTraceAreaJr::LEFT_SECTION_SIZE> LineTraceAreaJr::LEFT_COURSE_INFO
-    = { SectionParam{ 300, 23, 60, PidGain(1.2, 0, 0) },  //直線
-        SectionParam{ 1050, 23, 70, PidGain(1.9, 0, 0) }, //1st カーブ
-        SectionParam{ 1180, 23, 70, PidGain(1.85, 0, 0) },//Cross前 カーブ
-        SectionParam{ 460, 23, 100, PidGain(0, 0, 0) },   //1st Cross 直線
-        SectionParam{ 250, 23, 40, PidGain(1.45, 0, 0) }, //Cross後 調整
+    = { SectionParam{ 300, 23, 60, PidGain(1.2, 0, 0) },    //直線
+        SectionParam{ 1050, 23, 70, PidGain(1.9, 0, 0) },   //1st カーブ
+        SectionParam{ 1180, 23, 70, PidGain(1.85, 0, 0) },  //Cross前 カーブ
+        SectionParam{ 470, 23, 100, PidGain(0, 0, 0) },     //1st Cross 直線
+        SectionParam{ 260, 23, 40, PidGain(1.55, 0, 0) },   //Cross後 調整
         SectionParam{ 2300, 23, 80, PidGain(1.75, 0, 0) },
-        SectionParam{ 500, 23, 100, PidGain(0, 0, 0) },   //2nd Cross
+        SectionParam{ 500, 23, 100, PidGain(0, 0, 0) },     //2nd Cross
         SectionParam{ 720, 23, 40, PidGain(1.45, 0, 0) },
-        SectionParam{ 1500, 23, 60, PidGain(2.05, 0, 0) },//GATE4 前のカーブ
-        SectionParam{ 1600, 23, 100, PidGain(1.65, 0, 0) }//直線
+        SectionParam{ 1500, 23, 60, PidGain(2.05, 0, 0) },  //GATE4 前のカーブ
+        SectionParam{ 1600, 23, 100, PidGain(1.75, 0, 0) }, //直線
+        SectionParam{ 700, 23, 60, PidGain(2.05, 0, 0) },
+        SectionParam{ 950, 23, 100, PidGain(1.95, 0, 0) }  //Last 直線
         };
 
 // Rコースの情報を初期化する
