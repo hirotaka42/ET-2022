@@ -14,6 +14,8 @@ void EtRobocon2022::start()
   while(!measurer.isPressed()) {
     controller.sleep();
   }
+  //ライントレースエリア攻略開始
+  LineTraceAreaJr::runLineTraceAreaJr();
 
   //シミュレータへ競技の終了を通知する
   controller.notifyCompletedToSimulator();

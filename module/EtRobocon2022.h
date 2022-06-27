@@ -8,6 +8,7 @@
 #define ETROBOCON2022_H
 
 #include "Controller.h"
+#include "LineTraceAreaJr.h"
 #include "Measurer.h"
 
 
