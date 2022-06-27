@@ -7,7 +7,16 @@
 
 LineTracer::LineTracer(bool _isLeftEdge) : isLeftEdge(_isLeftEdge) {}
 
-//設定された距離を走行する
+//
+
+/**
+ * @brief 設定された距離を走行する関数
+ * 
+ * @param targetDistance    // 走行距離
+ * @param targetBrightness  // 目標輝度
+ * @param pwm               // 速度
+ * @param gain              // ゲイン
+ */
 void LineTracer::run(double targetDistance, int targetBrightness, int pwm, const PidGain& gain)
 {
   double initialDistance = 0;
