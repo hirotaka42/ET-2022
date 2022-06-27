@@ -7,8 +7,10 @@
 #define CONTROLLER_H
 
 #include "ev3api.h"
+#include "etroboc_ext.h"
 #include "Motor.h"
 #include "Clock.h"
+#include "Measurer.h"
 
 class Controller {
  public:
@@ -49,7 +51,7 @@ class Controller {
   // /**
   //  * シミュレータへ競技の終了を通知する
   //  */
-  // void notifyCompletedToSimulator();
+  void notifyCompletedToSimulator();
 
   void resetMotorCount();
 

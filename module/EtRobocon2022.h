@@ -6,6 +6,11 @@
 
 #ifndef ETROBOCON2022_H
 #define ETROBOCON2022_H
+
+#include "Controller.h"
+#include "Measurer.h"
+
+
 class EtRobocon2022 {
  public:
   static void start();
