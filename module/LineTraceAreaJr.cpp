@@ -1,14 +1,24 @@
 /**
  * @file LineTraceAreaJr.cpp
  * @brief ライントレースエリアを攻略するクラスのテスト用
- * @author Hisataka-Hagiyama,uchyam
+ * @author 
  */
 
 #include "LineTraceAreaJr.h"
 
 // Lコースの情報を初期化する
 const std::array<SectionParam, LineTraceAreaJr::LEFT_SECTION_SIZE> LineTraceAreaJr::LEFT_COURSE_INFO
-    = { SectionParam{ 1500, 23, 60, PidGain(1, 0, 0) }};
+    = { SectionParam{ 300, 23, 60, PidGain(1.2, 0, 0) },  //直線
+        SectionParam{ 1050, 23, 70, PidGain(1.9, 0, 0) }, //1st カーブ
+        SectionParam{ 1180, 23, 70, PidGain(1.85, 0, 0) },//Cross前 カーブ
+        SectionParam{ 460, 23, 100, PidGain(0, 0, 0) },   //1st Cross 直線
+        SectionParam{ 250, 23, 40, PidGain(1.45, 0, 0) }, //Cross後 調整
+        SectionParam{ 2300, 23, 80, PidGain(1.75, 0, 0) },
+        SectionParam{ 500, 23, 100, PidGain(0, 0, 0) },   //2nd Cross
+        SectionParam{ 720, 23, 40, PidGain(1.45, 0, 0) },
+        SectionParam{ 1500, 23, 60, PidGain(2.05, 0, 0) },//GATE4 前のカーブ
+        SectionParam{ 1600, 23, 100, PidGain(1.65, 0, 0) }//直線
+        };
 
 // Rコースの情報を初期化する
 const std::array<SectionParam, LineTraceAreaJr::RIGHT_SECTION_SIZE> LineTraceAreaJr::RIGHT_COURSE_INFO
@@ -32,35 +42,32 @@ void LineTraceAreaJr::runLineTraceAreaJr()
     //runLineTraceAreaJrShortcut();
     //エッジの設定
     isLeftEdge = !IS_LEFT_COURSE;
-
     // LineTracerにエッジを与えてインスタンス化する
     LineTracer lineTracer(isLeftEdge);
-
     // LRに応じて各区間を順番に走らせる
-    for(int section = 0; section < (IS_LEFT_COURSE ? LEFT_SECTION_SIZE : RIGHT_SECTION_SIZE);
-        section++) {
+    for(int section = 0; section < (IS_LEFT_COURSE ? LEFT_SECTION_SIZE : RIGHT_SECTION_SIZE); section++) 
+    {
       // Linetracerクラスのrun関数に区間の情報を渡して走行させる
       lineTracer.run(param[section].sectionDistance, param[section].sectionTargetBrightness,
-                     param[section].sectionPwm, param[section].sectionPidGain);
+                      param[section].sectionPwm, param[section].sectionPidGain);
     }
   } else {
     // Rコースの場合
     param = RIGHT_COURSE_INFO.begin();
-
     //エッジの設定
-    isLeftEdge = !IS_LEFT_COURSE;
-
+    isLeftEdge = IS_LEFT_COURSE;
     // LineTracerにエッジを与えてインスタンス化する
     LineTracer lineTracer(isLeftEdge);
-
     // LRに応じて各区間を順番に走らせる
-    for(int section = 0; section < (IS_LEFT_COURSE ? LEFT_SECTION_SIZE : RIGHT_SECTION_SIZE);
-        section++) {
+    for(int section = 0; section < (IS_LEFT_COURSE ? LEFT_SECTION_SIZE : RIGHT_SECTION_SIZE);section++) 
+    {
       // Linetracerクラスのrun関数に区間の情報を渡して走行させる
       lineTracer.run(param[section].sectionDistance, param[section].sectionTargetBrightness,
-                     param[section].sectionPwm, param[section].sectionPidGain);
+                      param[section].sectionPwm, param[section].sectionPidGain);
     }
   }
+
+  
 }
 
 void LineTraceAreaJr::runLineTraceAreaJrShortcut()

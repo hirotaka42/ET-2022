@@ -66,7 +66,7 @@ void LineTracer::runToColor(int targetBrightness, int pwm, const PidGain& gain)
     // 色を判定し、白黒以外で在ればループを抜ける
     color = ColorJudge::getColor(measurer.getRawColor());
     if(color != COLOR::BLACK && color != COLOR::WHITE) {
-      break;
+      //break;
     }
     // PID計算
     currentPid = pid.calculatePid(measurer.getBrightness()) * pidSign;

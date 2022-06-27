@@ -48,6 +48,12 @@ void Controller::stopArmMotor()
   armMotor.stop();
 }
 
+//LED
+void Controller::setColorLed()
+{
+  ev3_led_set_color(LED_ORANGE);
+}
+
 //スリープ
 void Controller::sleep(int milliSec)
 {

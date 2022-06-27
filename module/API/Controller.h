@@ -43,6 +43,12 @@ class Controller {
   void stopArmMotor();
 
   /**
+   * @brief LEDにオレンジをセットする
+   * 
+   */
+  void setColorLed();
+
+  /**
    * 自タスクスリープ
    * @param milliSec スリープ時間(ミリ秒)
    */
